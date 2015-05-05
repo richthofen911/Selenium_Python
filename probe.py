@@ -16,10 +16,8 @@ def hit_url_simple(url):
 		res_page = urllib2.urlopen(url).read()	
 		return res_page
 
-url1 = "http://54.149.146.72/auth.php"
-url2 = "http://54.149.146.72/index.php"
-url3 = "http://54.149.146.72/inout.php"
-url4 = "http://www.google.ca"
+
+url_signup = "https://admin.firebase.com/account"
 url_login = 'https://admin.firebase.com/account/login?email=yichaoli.richthofen%40gmail.com&password=qwer1234&rememberMe=true'
 url_newapp = 'https://admin.firebase.com/firebase/apdqc'
 #login_values = {'macaddress': 'aa:bb:cc:dd:ee:ff', 'presence': 'in'}
@@ -31,9 +29,16 @@ url_newapp = 'https://admin.firebase.com/firebase/apdqc'
 data = json.loads(hit_url_simple(url_login))
 token = data['adminToken']
 
+
+
+signup_values = {'email': '578645013@qq.com', 'password': 'qwer1234', 'referrer': 'https://www.google.ca/'}
+signup_data = urllib.urlencode(signup_values)
 newapp_values = {'token': token, 'appName': 'apdqc'}
 newapp_data = urllib.urlencode(newapp_values)
 
+print (hit_url_data(url_signup, signup_data))
+
+'''
 data = json.loads( hit_url_data(url_newapp, newapp_data))
 result_temp = data['success']
 print result_temp
@@ -44,7 +49,7 @@ else:
     result = data['error']
 
 ref_url = "https://" + result + ".firebaseio.com"
-                
+'''                
 
 '''
 output = open('log', 'w')x

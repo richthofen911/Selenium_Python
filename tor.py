@@ -41,10 +41,6 @@ class MainHandler(tornado.web.RequestHandler):
         except tornado.httpclient.HTTPError as e:
             print ('Error: ' + str(e))
         http_client.close()
-        
-#        print res_signup
-#        self.write(res_signup)
-#        self.write("Hello, world " + self.get_argument('email') + self.get_argument('name'))
 
 application = tornado.web.Application([
     (r"/", MainHandler),

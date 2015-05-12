@@ -9,7 +9,7 @@ import tornado.httpclient
 url_signup = "https://admin.firebase.com/account"
 url_login_prefix = 'https://admin.firebase.com/account/login?email='
 url_login_suffix = '&password=qwer1234&rememberMe=true'
-url_newapp_prefix = 'https://admin.firebase.com/firebase/chatlite'
+url_newapp_prefix = 'https://admin.firebase.com/firebase/clqq'
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -29,10 +29,11 @@ class MainHandler(tornado.web.RequestHandler):
                 response_login_data = json.loads(response.body)
                 token = response_login_data['adminToken']
                 print (token)
-                params_newapp = urllib.urlencode({'token': token, 'appName': 'clqq' + email[0: 5]})
-                print ('new app: clqq' + email[0: 5])
+                params_newapp = urllib.urlencode({'token': token, 'appName': 'clqq' + email[2: 7]})
+                print ('new app: clqq' + email[2: 7])
                 try:
-                    response = http_client.fetch(url_newapp_prefix + email[0: 9], method = 'POST', headers = None, body = params_newapp)
+                    response = http_client.fetch(url_newapp_prefix + email[2: 7], method = 'POST', headers = None, body = params_newapp)
+                    self.write(response.body)
                     print (response.body)
                 except tornado.httpclient.HTTPError as e:
                     print ('Error: ' + str(e))
